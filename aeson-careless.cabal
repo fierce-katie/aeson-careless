@@ -4,7 +4,8 @@ version:             0.0.0.0
 synopsis:            Parse JSON with less failing
 description:         A library to parse JSON with Aeson, but collecting error
                      messages instead of failing
-license:             NONE
+license:             WTFPL
+license-file:        LICENSE
 author:              Catherine Galkina
 maintainer:          Catherine Galkina <catherine.galkina@gmail.com>
 copyright:           2024 Catherine Galkina
@@ -15,35 +16,44 @@ extra-doc-files:     README.md
 common common-options
   build-depends:       aeson >= 2.2.2.0
                      , base >= 4.13.0.0
+                     , dlist
                      , lens
                      , mtl
+                     , tagged
                      , text
+                     , vector
 
-  ghc-options:         -Wall
-                       -Wcompat
-                       -Widentities
-                       -Wincomplete-uni-patterns
-                       -Wincomplete-record-updates
-  if impl(ghc >= 8.0)
-    ghc-options:       -Wredundant-constraints
-  if impl(ghc >= 8.2)
-    ghc-options:       -fhide-source-paths
-  if impl(ghc >= 8.4)
-    ghc-options:       -Wpartial-fields
+  ghc-options:       -Wall -Werror
+                     -Wno-ambiguous-fields
+                     -funbox-strict-fields
+                     -Wunused-packages
 
-  default-language:    GHC2021
-  default-extensions:  DeriveGeneric
+  default-language:    Haskell2010
+  default-extensions:  DataKinds
+                       DeriveFunctor
                        DerivingStrategies
                        FlexibleContexts
+                       FlexibleInstances
+                       FunctionalDependencies
+                       GeneralizedNewtypeDeriving
                        ImportQualifiedPost
                        LambdaCase
                        OverloadedRecordDot
                        OverloadedStrings
                        RecordWildCards
-                       ViewPatterns
+                       ScopedTypeVariables
+                       TupleSections
+                       TypeApplications
+                       TypeFamilies
+                       TypeOperators
                        UndecidableInstances
+                       ViewPatterns
 
 library
   import:              common-options
   hs-source-dirs:      src
   exposed-modules:     Data.Aeson.Careless
+                     , Data.Aeson.Careless.FromJSON
+                     , Data.Aeson.Careless.Types
+                     , Data.Aeson.Types.FromJSON
+                     , Data.Aeson.Types.Generic
