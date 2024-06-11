@@ -1,3 +1,4 @@
+-- Based on https://hackage.haskell.org/package/aeson-2.2.2.0/docs/src/Data.Aeson.Types.FromJSON.html
 {-# LANGUAGE PartialTypeSignatures #-}
 module Data.Aeson.Types.FromJSON where
 

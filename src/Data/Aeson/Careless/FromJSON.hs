@@ -1,4 +1,9 @@
-module Data.Aeson.Careless.FromJSON where
+module Data.Aeson.Careless.FromJSON
+  ( FromJSONWithWarnings(..)
+  , GFromJSONWithWarnings(..)
+  , genericParseJSONWithWarnings
+  , fromJSONWithWarnings
+  , fromJSONWithWarningsMaybe) where
 
 import Control.Applicative
 import Control.Lens hiding (to, ix)
