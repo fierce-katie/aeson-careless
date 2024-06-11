@@ -1,0 +1,49 @@
+cabal-version:       2.4
+name:                aeson-careless
+version:             0.0.0.0
+synopsis:            Parse JSON with less failing
+description:         A library to parse JSON with Aeson, but collecting error
+                     messages instead of failing
+license:             NONE
+author:              Catherine Galkina
+maintainer:          Catherine Galkina <catherine.galkina@gmail.com>
+copyright:           2024 Catherine Galkina
+category:            Web, JSON
+build-type:          Simple
+extra-doc-files:     README.md
+
+common common-options
+  build-depends:       aeson >= 2.2.2.0
+                     , base >= 4.13.0.0
+                     , lens
+                     , mtl
+                     , text
+
+  ghc-options:         -Wall
+                       -Wcompat
+                       -Widentities
+                       -Wincomplete-uni-patterns
+                       -Wincomplete-record-updates
+  if impl(ghc >= 8.0)
+    ghc-options:       -Wredundant-constraints
+  if impl(ghc >= 8.2)
+    ghc-options:       -fhide-source-paths
+  if impl(ghc >= 8.4)
+    ghc-options:       -Wpartial-fields
+
+  default-language:    GHC2021
+  default-extensions:  DeriveGeneric
+                       DerivingStrategies
+                       FlexibleContexts
+                       ImportQualifiedPost
+                       LambdaCase
+                       OverloadedRecordDot
+                       OverloadedStrings
+                       RecordWildCards
+                       ViewPatterns
+                       UndecidableInstances
+
+library
+  import:              common-options
+  hs-source-dirs:      src
+  exposed-modules:     Data.Aeson.Careless
